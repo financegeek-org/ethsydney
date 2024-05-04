@@ -11,6 +11,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+    typography: {
+      fontFamily: [
+        '"Figtree"',
+        'sans-serif',
+      ].join(','),
+    },
+  });
+
 type TypeChoices = {
     grain: number,
     rice: number,
@@ -65,7 +76,8 @@ export default function Votes() {
       console.log(voteList);
       console.log(rows);
 	return (
-		<div>
+		<div style={{ fontFamily: 'Figtree, sans-serif' }}>
+<ThemeProvider theme={theme}>
 
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -96,6 +108,8 @@ export default function Votes() {
         </TableBody>
       </Table>
     </TableContainer>
+    </ThemeProvider>
+
 		</div>
 	);
 }

@@ -4,6 +4,16 @@ import type { ISuccessResult } from "@worldcoin/idkit";
 import type { VerifyReply } from "./api/verify";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+    typography: {
+      fontFamily: [
+        '"Figtree"',
+        'sans-serif',
+      ].join(','),
+    },
+  });
 
 export default function Vote() {
     const [voteGrain, setVoteGrain] = useState(0);
@@ -53,9 +63,9 @@ export default function Vote() {
 			throw new Error(`Error code ${res.status} (${data.code}): ${data.detail}` ?? "Unknown error."); // Throw an error if verification fails
 		}
 	};
-    const remain=3-voteGrain-voteHygiene-voteRice;
+    const remain=100-voteGrain-voteHygiene-voteRice;
 	return (
-		<div>
+		<div style={{ fontFamily: 'Figtree, sans-serif' }}>
 			<div className="flex flex-col items-center justify-center align-middle h-screen">
 				<p className="text-2xl mb-5">May 2024 Grain Distribution</p>
                 Vote for next aid package: {remain} points remaining<br />
@@ -67,6 +77,8 @@ export default function Vote() {
       noValidate
       autoComplete="off"
     >
+<ThemeProvider theme={theme}>
+
       <div>
         <TextField
           required
@@ -94,6 +106,8 @@ export default function Vote() {
           onChange={(e) => setVoteHygiene(Number(e.target.value))}
         />
       </div>
+      </ThemeProvider>
+
         </Box>
 				<IDKitWidget
 					action={process.env.NEXT_PUBLIC_WLD_ACTION!}
@@ -105,7 +119,7 @@ export default function Vote() {
 				>
 					{({ open }) =>
 						<button className="border border-black rounded-md" onClick={open}>
-							<div className="mx-3 my-1">Claim with World ID</div>
+							<div className="mx-3 my-1" style={{ flexDirection: 'row', justifyContent: 'space-between' }}>Claim with World ID <img src="/icons/check-circle-rounded.svg" /></div>
 						</button>
 					}
 				</IDKitWidget>
