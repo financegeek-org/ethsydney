@@ -1,5 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+const { MongoClient } = require("mongodb");
+// Replace the uri string with your connection string.
+const uri = process.env.MONGO_URL;
+
+const client = new MongoClient(uri);
+
+const myDB = client.db("hackathon");
+const myColl = myDB.collection("ethsydney");
+
 export const config = {
   api: {
     externalResolver: true,
@@ -49,6 +58,9 @@ export default function handler(
         );
         // Save to database
         console.log("Saving",req.body.signal);
+        const doc = { nullifier_hash: wldResponse.nullifier_hash, vote: req.body.signal };
+        const result = myColl.insertOne(doc); // should await on this but doens't matter for hackathon
+
         res.status(verifyRes.status).send({
           code: "success",
           detail: "This action verified correctly!",
