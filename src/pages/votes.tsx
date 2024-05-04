@@ -78,7 +78,7 @@ export default function Votes() {
     sumGrain = sumGrain + (Math.log(choices['voteGrain'] + 1) / Math.log(logBase));
     sumRice = sumRice + (Math.log(choices['voteRice'] + 1) / Math.log(logBase));
     sumHygiene = sumHygiene + (Math.log(choices['voteHygiene'] + 1) / Math.log(logBase));
-    return createData(vote['nullifier_hash'], vote['time'], choices['voteGrain'], choices['voteRice'], choices['voteHygiene']);
+    return createData(vote['nullifier_hash'], vote['date'], choices['voteGrain'], choices['voteRice'], choices['voteHygiene']);
   });
 
   console.log(voteList);
