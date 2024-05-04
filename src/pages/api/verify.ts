@@ -58,7 +58,7 @@ export default function handler(
         );
         // Save to database
         console.log("Saving",req.body.signal);
-        const doc = { nullifier_hash: wldResponse.nullifier_hash, vote: req.body.signal };
+        const doc = { date: new Date(Date.now()).toISOString(), nullifier_hash: wldResponse.nullifier_hash, vote: req.body.signal };
         const result = myColl.insertOne(doc); // should await on this but doens't matter for hackathon
 
         res.status(verifyRes.status).send({
