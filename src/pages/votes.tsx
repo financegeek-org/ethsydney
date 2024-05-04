@@ -86,9 +86,9 @@ export default function Votes() {
   return (
     <div style={{ fontFamily: 'Figtree, sans-serif' }}>
       Score<br />
-      Grain: {sumGrain}<br></br>
-      Rice: {sumRice}<br></br>
-      Hygiene: {sumHygiene}<br></br>
+      Grain: {sumGrain} [<a href="https://onramp-sandbox.gatefi.com/?merchantId=dd3591ba-b927-455a-a2b2-0e2d8aa1b3f8&wallet=0x257B2457b10C02d393458393515F51dc8880300d">Donate</a>]<br />
+      Rice: {sumRice} [<a href="https://onramp-sandbox.gatefi.com/?merchantId=dd3591ba-b927-455a-a2b2-0e2d8aa1b3f8&wallet=0x257B2457b10C02d393458393515F51dc8880300d">Donate</a>]<br />
+      Hygiene: {sumHygiene} [<a href="https://onramp-sandbox.gatefi.com/?merchantId=dd3591ba-b927-455a-a2b2-0e2d8aa1b3f8&wallet=0x257B2457b10C02d393458393515F51dc8880300d">Donate</a>]<br />
       <ThemeProvider theme={theme}>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
