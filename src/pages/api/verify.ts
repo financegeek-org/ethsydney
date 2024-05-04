@@ -47,6 +47,8 @@ export default function handler(
           "Credential verified! This user's nullifier hash is: ",
           wldResponse.nullifier_hash
         );
+        // Save to database
+        console.log("Saving",req.body.signal);
         res.status(verifyRes.status).send({
           code: "success",
           detail: "This action verified correctly!",
