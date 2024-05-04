@@ -10,3 +10,8 @@
   font-style: normal;
   src: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap";
 }
+
+.container-same-line {
+    display: flex;
+    align-items: center; /* Vertically center content */
+}

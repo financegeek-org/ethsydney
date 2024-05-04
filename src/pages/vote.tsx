@@ -67,8 +67,14 @@ export default function Vote() {
   return (
     <div style={{ fontFamily: 'Figtree, sans-serif' }}>
       <div className="flex flex-col items-center justify-center align-middle h-screen">
-        <p className="text-2xl mb-5">May 2024 Grain Distribution</p>
-        Vote for next aid package: {remain} points remaining<br />
+        <div className="container-same-line">
+        <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
+          <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
+          <p className="text-2xl mb-5">May 2024 Grain Distribution</p>
+          <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
+          <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
+        </div>
+        Vote for next aid package:<br />{remain} points remaining<br />
         <Box
           component="form"
           sx={{
@@ -119,7 +125,11 @@ export default function Vote() {
         >
           {({ open }) =>
             <button className="border border-black rounded-md" onClick={open}>
-              <div className="mx-3 my-1" style={{ flexDirection: 'row', justifyContent: 'space-between' }}>Claim with World ID <img src="/icons/check-circle-rounded.svg" /></div>
+                      <div className="container-same-line">
+                      <img src="/icons/check-circle-rounded.svg" />
+              <div className="mx-3 my-1" style={{ flexDirection: 'row', justifyContent: 'space-between' }}>Claim with World ID</div>
+              <img src="/icons/check-circle-rounded.svg" />
+              </div>
             </button>
           }
         </IDKitWidget>
