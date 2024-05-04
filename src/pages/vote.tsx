@@ -70,7 +70,7 @@ export default function Vote() {
         <div className="container-same-line">
         <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
           <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
-          <p className="text-2xl mb-5">May 2024 Grain Distribution</p>
+          <p className="text-2xl mb-5">May 2024 Grain Distribution - 10kg Bag</p>
           <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
           <img src={"https://noun-api.com/beta/pfp?head=101&glasses=14&size=50&r="+Math.random()} />
         </div>
