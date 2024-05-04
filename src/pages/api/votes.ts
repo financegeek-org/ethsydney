@@ -8,7 +8,7 @@ const db = client.db("hackathon");
 const collection = db.collection("ethsydney");
 
 export async function getAllVotes() {
-    const results = await collection.find({}).toArray();
+    const results = await collection.find({}).sort({_id:-1}).toArray();
     return results;
 }
 
