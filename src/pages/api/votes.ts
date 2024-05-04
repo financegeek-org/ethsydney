@@ -8,26 +8,25 @@ const db = client.db("hackathon");
 const collection = db.collection("ethsydney");
 
 export async function getAllVotes() {
-    const results = await collection.find({}).sort({_id:-1}).toArray();
-    return results;
+  const results = await collection.find({}).sort({ _id: -1 }).toArray();
+  return results;
 }
 
 export const config = {
-    api: {
-      externalResolver: true,
-    },
-  };
-  
-  export type ResponseType = {
-    votes: [];
-  };
+  api: {
+    externalResolver: true,
+  },
+};
+
+export type ResponseType = {
+  votes: [];
+};
 
 export default function handler(
-    req: NextApiRequest,
-    res: NextApiResponse<ResponseType>
-  ) {
-    getAllVotes().then((arr) => {
-        res.status(200).json(arr);
-    });
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseType>
+) {
+  getAllVotes().then((arr) => {
+    res.status(200).json(arr);
+  });
 }
-  
