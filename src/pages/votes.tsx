@@ -51,10 +51,11 @@ const getVotes = async () => {
 function createData(
   hash: string,
   time: number,
-  choices: TypeChoices,
+  grain: number,
+  rice: number,
+  hygiene: number,
 ) {
-  //console.log("Creating", choices)
-  return { hash, time, grain: choices['voteGrain'], rice: choices['voteRice'], hygiene: choices['voteHygiene'] };
+  return { hash, time, grain, rice, hygiene, };
 }
 
 
@@ -66,19 +67,29 @@ export default function Votes() {
       console.log(arr)
       setVoteList(arr);
     })
-  }, [])
+  }, []);
 
+  let sumGrain = 0;
+  let sumRice = 0;
+  let sumHygiene = 0;
   const rows = voteList.map(vote => {
     const choices = JSON.parse(vote['vote']);
-    return createData(vote['nullifier_hash'], vote['time'], choices)
+    const logBase = 1.9;
+    sumGrain = sumGrain + (Math.log(choices['voteGrain'] + 1) / Math.log(logBase));
+    sumRice = sumRice + (Math.log(choices['voteRice'] + 1) / Math.log(logBase));
+    sumHygiene = sumHygiene + (Math.log(choices['voteHygiene'] + 1) / Math.log(logBase));
+    return createData(vote['nullifier_hash'], vote['time'], choices['voteGrain'], choices['voteRice'], choices['voteHygiene']);
   });
 
   console.log(voteList);
   console.log(rows);
   return (
     <div style={{ fontFamily: 'Figtree, sans-serif' }}>
+      Score<br />
+      Grain: {sumGrain}<br></br>
+      Rice: {sumRice}<br></br>
+      Hygiene: {sumHygiene}<br></br>
       <ThemeProvider theme={theme}>
-
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
